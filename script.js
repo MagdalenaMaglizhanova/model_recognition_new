@@ -1,11 +1,11 @@
-const URL = "./";
+const MODEL_PATH = "./";
 
 let model, maxPredictions;
 
 async function init() {
     try {
-        const modelURL = URL + "model.json";
-        const metadataURL = URL + "metadata.json";
+        const modelURL = MODEL_PATH + "model.json";
+        const metadataURL = MODEL_PATH + "metadata.json";
 
         console.log("Зареждам модела...");
         model = await tmImage.load(modelURL, metadataURL);
@@ -21,8 +21,7 @@ async function init() {
 async function handleImage(event) {
     try {
         const image = document.getElementById("preview");
-        image.src = URL.createObjectURL(event.target.files[0]);
-        console.log("Избрана е снимка:", event.target.files[0].name);
+        image.src = URL.createObjectURL(event.target.files[0]); // Тук трябва да работи нормално
 
         image.onload = async () => {
             console.log("Изображението се зареди, правя предсказание...");
