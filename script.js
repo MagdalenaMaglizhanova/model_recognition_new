@@ -1,4 +1,4 @@
-const URL = "/model_recognition_new/";
+const URL = "./";
 
 let model, maxPredictions;
 
