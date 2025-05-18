@@ -1,40 +1,35 @@
-let model;
+const URL = "./"; // моделът и файловете са в същата папка
 
-async function loadModel() {
-  model = await tf.loadLayersModel('model.json');
-  console.log('Model loaded');
+let model, maxPredictions;
+
+async function init() {
+    const modelURL = URL + "model.json";
+    const metadataURL = URL + "metadata.json";
+
+    model = await tmImage.load(modelURL, metadataURL);
+    maxPredictions = model.getTotalClasses();
+
+    document.getElementById("imageUpload").addEventListener("change", handleImage);
 }
 
-async function predict(imageElement) {
-  // Преобразуване на изображението според изискванията на модела
-  let tensor = tf.browser.fromPixels(imageElement)
-    .resizeNearestNeighbor([224, 224]) // или друг размер
-    .toFloat()
-    .div(255.0)
-    .expandDims();
+async function handleImage(event) {
+    const image = document.getElementById("preview");
+    image.src = URL.createObjectURL(event.target.files[0]);
 
-  let prediction = await model.predict(tensor).data();
-  console.log(prediction);
+    image.onload = async () => {
+        const prediction = await model.predict(image);
+        let highestProb = 0;
+        let label = "Не е разпознато";
 
-  // Пример: показване на най-вероятния клас
-  const classes = ['parrot', 'white stork']; // замени с твоите класове
-  let maxIndex = prediction.indexOf(Math.max(...prediction));
-  document.getElementById('result').innerText = `Моделът разпознава: ${classes[maxIndex]}`;
-}
+        prediction.forEach(p => {
+            if (p.probability > highestProb) {
+                highestProb = p.probability;
+                label = p.className;
+            }
+        });
 
-document.getElementById('upload').addEventListener('change', (event) => {
-  const file = event.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const img = new Image();
-    img.src = e.target.result;
-    img.onload = () => {
-      predict(img);
+        document.getElementById("result").innerText = `Резултат: ${label} (${(highestProb * 100).toFixed(2)}%)`;
     };
-  };
-  reader.readAsDataURL(file);
-});
+}
 
-loadModel();
+init();
