@@ -1,4 +1,4 @@
-const URL = "./"; // моделът и файловете са в същата папка
+const URL = "/";
 
 let model, maxPredictions;
 
