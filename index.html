@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="bg">
 <head>
-  <title>Bird Recognition</title>
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Птици - разпознаване с Teachable Machine</title>
 </head>
 <body>
-  <h1>Птици - Разпознаване</h1>
-  <input type="file" id="upload" accept="image/*"/>
-  <div id="result"></div>
+    <h1>Разпознаване на птици</h1>
+    <input type="file" id="imageUpload" accept="image/*" />
+    <br />
+    <img id="preview" width="300" />
+    <p id="result">Резултат: -</p>
 
-  <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image"></script>
+    <script src="script.js"></script>
 </body>
 </html>
