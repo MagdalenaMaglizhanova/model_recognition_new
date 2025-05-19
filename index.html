@@ -153,10 +153,16 @@
     <div class="header">
         <h1>WingScan</h1>
         <p> 🦜Birds Recognition System</p>
-        <input type="file" id="imageUpload" accept="image/*" />
-        <br />
+        <div class="container">
+        <div class="upload-section">
+            <label class="upload-btn" for="imageUpload">
+                Upload Image
+            </label>
+            <input type="file" id="imageUpload" accept="image/*">
+        </div>
+        <img id="inputImage" style="display: none;" />
         <img id="preview" />
-        <p id="result">Резултат: -</p>
+        <p id="result">Result: -</p>
    </div>
        <p style="margin-top: 20px;">
    🔎If you want to learn more about different birds, explore <a href="https://magdalenamaglizhanova.github.io/Bird/" target="_blank" style="color: #00796b; font-weight: bold; text-decoration: none;">the encyclopedia.</a>.
