@@ -38,7 +38,7 @@ async function handleImage(event) {
                 }
             });
 
-            document.getElementById("result").innerText = `Резултат: ${label} (${(highestProb * 100).toFixed(2)}%)`;
+            document.getElementById("result").innerText = `Result: ${label} (${(highestProb * 100).toFixed(2)}%)`;
         };
     } catch (error) {
         console.error("Грешка при предсказанието:", error);
