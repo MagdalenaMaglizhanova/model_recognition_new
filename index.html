@@ -96,11 +96,12 @@
             box-shadow: 0 4px 12px rgba(108, 92, 231, 0.2);
         }
 
-        #inputImage {
+        #preview {
             max-width: 100%;
             border-radius: 12px;
             margin: 32px 0;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: block;
         }
 
         #prediction {
@@ -152,32 +153,39 @@
 <body>
     <div class="header">
         <h1>WingScan</h1>
-        <p> 🦜Birds Recognition System</p>
-        <div class="container">
+        <p>🦜 Birds Recognition System</p>
+    </div>
+
+    <div class="container">
         <div class="upload-section">
             <label class="upload-btn" for="imageUpload">
                 Upload Image
             </label>
             <input type="file" id="imageUpload" accept="image/*">
         </div>
-        <img id="inputImage" style="display: none;" />
+
+        <!-- Показване на каченото изображение -->
         <img id="preview" />
+
+        <!-- Резултат от разпознаването -->
         <p id="result">Result: -</p>
-   </div>
-       <p style="margin-top: 20px;">
-   🔎If you want to learn more about different birds, explore <a href="https://magdalenamaglizhanova.github.io/Bird/" target="_blank" style="color: #00796b; font-weight: bold; text-decoration: none;">the encyclopedia.</a>.
-</p>
+
+        <p style="margin-top: 20px;">
+            🔎 If you want to learn more about different birds, explore 
+            <a href="https://magdalenamaglizhanova.github.io/Bird/" target="_blank" style="color: #00796b; font-weight: bold; text-decoration: none;">
+                the encyclopedia
+            </a>.
+        </p>
+    </div>
 
     <footer>
         <p>© 2025 WingScan | Powered by Ivan Peev</p>
         <p>University of Plovdiv "Paisii Hilendarski"</p>
     </footer>
 
-    <!-- ЗАРЕЖДАНЕ НА ТОЧНИ БИБЛИОТЕКИ -->
+    <!-- Библиотеки -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.3/dist/teachablemachine-image.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
-    
-
